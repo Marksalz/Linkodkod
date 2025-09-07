@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import mockPosts from "./assets/mockPosts.json";
 import Homepage from "./pages/Homepage";
+import Header from "./components/Header";
 
 const posts = mockPosts;
 console.log(posts);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Homepage posts={posts} />
     </>
   );
