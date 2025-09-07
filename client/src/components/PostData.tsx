@@ -2,7 +2,7 @@ export default function PostData(props: {
   likes: number;
   description: string;
   name: string;
-  timestamp: Date;
+  timestamp: string;
 }) {
   return (
     <div className="post_data">

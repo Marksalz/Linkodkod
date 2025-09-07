@@ -4,7 +4,7 @@ import PostImg from "./PostImg";
 
 export default function Post(props: { postInfo: PostInfo }) {
   return (
-    <div>
+    <div className="post_card">
       <PostImg imgSrc={props.postInfo.imgSrc} />
       <PostData
         likes={props.postInfo.likes}

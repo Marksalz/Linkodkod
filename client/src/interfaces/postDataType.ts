@@ -3,5 +3,5 @@ export default interface PostInfo {
   likes: number;
   name: string;
   description: string;
-  timestamp: Date;
+  timestamp: string;
 }
