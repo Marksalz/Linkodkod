@@ -3,6 +3,7 @@ import "./App.css";
 import mockPosts from "./assets/mockPosts.json";
 import Homepage from "./pages/Homepage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const posts = mockPosts;
 console.log(posts);
@@ -16,6 +17,7 @@ function App() {
     <>
       <Header />
       <Homepage posts={posts} />
+      <Footer />
     </>
   );
 }
