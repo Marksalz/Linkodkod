@@ -1,4 +1,4 @@
-export default interface PostData {
+export default interface PostInfo {
   imgSrc: string;
   likes: number;
   name: string;
