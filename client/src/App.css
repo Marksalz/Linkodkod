@@ -15,6 +15,11 @@
   width: 100%;
 }
 
+.like_img{
+  width: 24px;
+  height: 24px;
+}
+
 .post_data{
   display: flex;
   flex-direction: column;
