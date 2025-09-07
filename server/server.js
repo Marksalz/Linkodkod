@@ -1,4 +1,5 @@
 import express from "express";
+import router from "./router.js";
 import "dotenv/config";
 
 const PORT = process.env.PORT || 3040;
@@ -11,9 +12,8 @@ server.use((req, res, next) => {
 
 // Middleware setup
 server.use(express.json());
-//server.use("/api", router);
-
+server.use("/api", router);
 
 server.listen(PORT, "0.0.0.0", async () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on  http://localhost:${PORT}`);
 });
