@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import "./App.css";
 import mockPosts from "./assets/mockPosts.json";
+import { BrowserRouter, Routes, Route } from "react-router";
 import Homepage from "./pages/Homepage";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Layout from "./application-layout/Layout";
 
 const posts = mockPosts;
 console.log(posts);
@@ -14,11 +14,13 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Header />
-      <Homepage posts={posts} />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage posts={posts} />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
