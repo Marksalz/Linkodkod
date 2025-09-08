@@ -1,4 +1,9 @@
-import { createNewPost, readById, readPosts } from "../services/postService.js";
+import {
+  createNewPost,
+  readById,
+  readPosts,
+  updatePostById,
+} from "../services/postService.js";
 
 async function readAllPosts(req, res) {
   try {
@@ -37,10 +42,28 @@ async function createPost(req, res) {
   }
 }
 
+async function updatePost(req, res) {
+  try {
+    const id = req.params.id;
+    const post = req.body;
+    const updatedPost = await updatePostById(post, id);
+    res.json({ success: "Post was updated successfully", post: updatedPost });
+  } catch (error) {
+    if (error.message === "post not found 404") {
+      res.status(404).end("Student not found");
+    } else {
+      res
+        .status(500)
+        .json({ error: "Failed to update post.", details: error.message });
+    }
+  }
+}
+
 const postsCtrl = {
   readAllPosts,
   readPostById,
   createPost,
+  updatePost,
 };
 
 export default postsCtrl;

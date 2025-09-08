@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "imgSrc": "http://localhost:3040/car1.png",
+    "imgSrc": "http://localhost:3040/car2.png",
     "likes": 344,
     "description": "cute cat pic hasajkahs asanskajskajsa saskajsajsa sanskasj sdkjdsjd dsnkdsnkdsc cnksncksc sncksncks ",
     "name": "Menachem Salzberg",
@@ -53,6 +53,6 @@
     "description": "kodkoasjds dsnkdsaidias dsdksjdsd sdjojdsaijdisa dsdnisdjsajd ",
     "name": "Adina Salzberg",
     "timestamp": "10/09/2025 4:00pm",
-    "id": "7"
+    "id": 7
   }
 ]

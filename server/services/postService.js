@@ -24,7 +24,7 @@ export async function readById(id) {
 export async function createNewPost(newPost) {
   try {
     const posts = await readPosts();
-    newPost.id = String(
+    newPost.id = Number(
       posts.length > 0 ? Math.max(...posts.map((p) => Number(p.id))) + 1 : 1
     );
     posts.push(newPost);
@@ -32,5 +32,20 @@ export async function createNewPost(newPost) {
     return newPost;
   } catch (error) {
     throw new Error("Failed to create post", error.message);
+  }
+}
+
+export async function updatePostById(post, id) {
+  try {
+    const posts = await readPosts();
+    const idx = posts.findIndex((p) => p.id === Number(id));
+    if (idx === -1) {
+      throw new Error("post not found 404");
+    }
+    posts[idx] = { ...posts[idx], ...post };
+    await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
+    return posts[idx];
+  } catch (error) {
+    throw new Error("failed to update post", error.message);
   }
 }

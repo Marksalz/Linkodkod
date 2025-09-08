@@ -6,7 +6,7 @@ const postsRouter = Router();
 postsRouter.get("/", postsCtrl.readAllPosts);
 postsRouter.get("/:id", postsCtrl.readPostById);
 postsRouter.post("/create", postsCtrl.createPost);
-postsRouter.get("/update/:id", (req, res) => {});
+postsRouter.put("/update/:id", postsCtrl.updatePost);
 postsRouter.get("/delete/:id", (req, res) => {});
 
 export default postsRouter;
