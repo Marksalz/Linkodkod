@@ -6,13 +6,9 @@ export default function PostData(props: {
 }) {
   return (
     <div className="post_data">
-      <section>
+      <section className="likes">
         <span>{props.likes}</span>
-        <img
-          className="like_img"
-          src="https://lh5.googleusercontent.com/proxy/yKF3xtQ_jplnFBlc8A5kz8CQyfxUJtOAC1zGf5zL7UP4_bN1nsB-TFYiHyh_i9YWJhIfoVhheiRUQ97qSDmFEjU78dJwoIyLlgvv8coMhre7CQ"
-          alt="like img"
-        />
+        <img className="like_img" src="src/assets/likeImg.png" alt="like img" />
       </section>
 
       <span>{props.name}</span>
