@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Post from "../components/Post";
 import { usePosts } from "../contexts/posts.context.tsx";
+import { useNavigate } from "react-router";
 
 export default function Homepage() {
   const postsContext = usePosts();
@@ -37,8 +38,10 @@ export default function Homepage() {
     getPosts();
   }, []);
 
+  const navigate = useNavigate();
+
   const handleClick = (id: any): void => {
-    console.log(`Clicked on ID: ${id}`);
+    navigate(`/post/${id}`);
   };
 
   return (

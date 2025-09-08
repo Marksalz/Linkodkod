@@ -10,7 +10,7 @@ export default function PostPage() {
   let { id } = useParams();
 
   useEffect(() => {
-    //document.title = "Home Page";
+    document.title = "Post";
     const getPost = async () => {
       setIsLoading(true);
       try {
@@ -25,9 +25,6 @@ export default function PostPage() {
           return;
         }
         const data = await res.json();
-
-        console.log(data["post"][0]);
-
         setPost(data["post"][0]);
         setErrorMessage("");
         localStorage.setItem("posts", JSON.stringify(data));
@@ -42,7 +39,7 @@ export default function PostPage() {
   }, []);
 
   return (
-    <div>
+    <div className="post_container">
       {isLoading && <p>Loading data...</p>}
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       {post && <Post postInfo={post} likeUrl="../src/assets/likeImg.png" />}
