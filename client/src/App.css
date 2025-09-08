@@ -16,8 +16,6 @@
   width: 80vw;
 }
 
-
-
 .header img {
   width: 48px;
   height: 48px;
@@ -36,6 +34,10 @@
   border-radius: 8px;
   padding: 1rem;
   background-color: aliceblue;
+}
+
+.post_card:hover {
+  cursor: pointer;
 }
 
 .post_img {
@@ -78,4 +80,10 @@
   background: transparent;
   margin-top: 20px;
   position: static;
+}
+
+.post_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

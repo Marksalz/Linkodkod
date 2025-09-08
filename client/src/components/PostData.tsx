@@ -3,12 +3,13 @@ export default function PostData(props: {
   description: string;
   name: string;
   timestamp: string;
+  likeUrl: string;
 }) {
   return (
     <div className="post_data">
       <section className="likes">
         <span>{props.likes}</span>
-        <img className="like_img" src="src/assets/likeImg.png" alt="like img" />
+        <img className="like_img" src={props.likeUrl} alt="like img" />
       </section>
 
       <span>{props.name}</span>

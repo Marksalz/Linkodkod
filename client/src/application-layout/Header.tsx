@@ -7,7 +7,7 @@ export default function Header() {
     <div className="header">
       <Nav />
       <Slogan sloganTxt="Uniting people creating connections" />
-      <Logo />
+      <Logo url={"../src/assets/appLogo.jpeg"} />
     </div>
   );
 }
