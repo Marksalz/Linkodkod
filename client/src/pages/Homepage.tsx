@@ -8,6 +8,7 @@ export default function Homepage() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    document.title = "Home Page";
     const getPosts = async () => {
       setIsLoading(true);
       try {
