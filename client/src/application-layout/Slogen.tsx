@@ -1,3 +1,3 @@
 export default function Slogan(props: { sloganTxt: string }) {
-  return <p>{props.sloganTxt}</p>;
+  return <p className="slogan">{props.sloganTxt}</p>;
 }

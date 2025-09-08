@@ -6,7 +6,7 @@ export default function PostData(props: {
 }) {
   return (
     <div className="post_data">
-      <section>
+      <section className="likes">
         <span>{props.likes}</span>
         <img className="like_img" src="src/assets/likeImg.png" alt="like img" />
       </section>
