@@ -1,5 +1,6 @@
 import {
   createNewPost,
+  deletePostById,
   readById,
   readPosts,
   updatePostById,
@@ -9,12 +10,18 @@ async function readAllPosts(req, res) {
   try {
     const posts = await readPosts();
     console.error("Success");
-    res.json({ success: "Get posts was successful", posts: posts });
+    res.json({
+      success: true,
+      message: "Get posts was successful",
+      posts: posts,
+    });
   } catch (error) {
     console.error("Failed to fetch posts:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to fetch posts.", details: error.message });
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch posts.",
+      details: error.message,
+    });
   }
 }
 
@@ -22,23 +29,31 @@ async function readPostById(req, res) {
   try {
     const id = req.params.id;
     const post = await readById(id);
-    res.json({ success: "Get post was successful", post: post });
+    res.json({ success: true, message: "Get post was successful", post: post });
   } catch (error) {
     console.error("Failed to fetch post:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to fetch post.", details: error.message });
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch post.",
+      details: error.message,
+    });
   }
 }
 
 async function createPost(req, res) {
   try {
     const newPost = await createNewPost(req.body);
-    res.json({ success: "Post was created successfully", post: newPost });
+    res.json({
+      success: true,
+      message: "Post was created successfully",
+      post: newPost,
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Failed to create post.", details: error.message });
+    res.status(500).json({
+      success: false,
+      error: "Failed to create post.",
+      details: error.message,
+    });
   }
 }
 
@@ -47,14 +62,44 @@ async function updatePost(req, res) {
     const id = req.params.id;
     const post = req.body;
     const updatedPost = await updatePostById(post, id);
-    res.json({ success: "Post was updated successfully", post: updatedPost });
+    res.json({
+      success: true,
+      message: "Post was updated successfully",
+      post: updatedPost,
+    });
   } catch (error) {
     if (error.message === "post not found 404") {
-      res.status(404).end("Student not found");
+      res.status(404).end(`Post with Id: ${id} not found`);
     } else {
-      res
-        .status(500)
-        .json({ error: "Failed to update post.", details: error.message });
+      res.status(500).json({
+        success: false,
+        error: "Failed to update post.",
+        details: error.message,
+      });
+    }
+  }
+}
+
+async function deletePost(req, res) {
+  try {
+    const id = req.params.id;
+    const deletedPost = await deletePostById(id);
+    res.json({
+      success: true,
+      message: "Post was deleted successfully",
+      post: deletedPost,
+    });
+  } catch (error) {
+    console.log(error.message);
+
+    if (error.message === "post not found 404") {
+      res.status(404).end(`Post with Id: ${id} not found`);
+    } else {
+      res.status(500).json({
+        success: false,
+        error: "Failed to update post.",
+        details: error.message,
+      });
     }
   }
 }
@@ -64,6 +109,7 @@ const postsCtrl = {
   readPostById,
   createPost,
   updatePost,
+  deletePost,
 };
 
 export default postsCtrl;

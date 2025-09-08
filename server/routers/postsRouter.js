@@ -7,6 +7,6 @@ postsRouter.get("/", postsCtrl.readAllPosts);
 postsRouter.get("/:id", postsCtrl.readPostById);
 postsRouter.post("/create", postsCtrl.createPost);
 postsRouter.put("/update/:id", postsCtrl.updatePost);
-postsRouter.get("/delete/:id", (req, res) => {});
+postsRouter.delete("/delete/:id", postsCtrl.deletePost);
 
 export default postsRouter;

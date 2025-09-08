@@ -49,3 +49,18 @@ export async function updatePostById(post, id) {
     throw new Error("failed to update post", error.message);
   }
 }
+
+export async function deletePostById(id) {
+  try {
+    const posts = await readPosts();
+    const idx = posts.findIndex((p) => p.id === Number(id));
+    if (idx === -1) {
+      throw new Error("post not found 404");
+    }
+    const deleted = posts.splice(idx, 1)[0];
+    await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
+    return deleted;
+  } catch (error) {
+    throw new Error("failed to delete post", error.message);
+  }
+}

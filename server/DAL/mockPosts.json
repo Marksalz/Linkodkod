@@ -1,13 +1,5 @@
 [
   {
-    "id": 1,
-    "imgSrc": "http://localhost:3040/car2.png",
-    "likes": 344,
-    "description": "cute cat pic hasajkahs asanskajskajsa saskajsajsa sanskasj sdkjdsjd dsnkdsnkdsc cnksncksc sncksncks ",
-    "name": "Menachem Salzberg",
-    "timestamp": "09/07/2025 12:00pm"
-  },
-  {
     "id": 2,
     "imgSrc": "http://localhost:3040/car2.png",
     "likes": 22,
