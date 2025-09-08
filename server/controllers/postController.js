@@ -2,9 +2,9 @@ import { readPosts } from "../services/postService.js";
 
 export async function readAllPosts(req, res) {
   try {
-    const posts = readPosts();
+    const posts = await readPosts();
     console.error("Success");
-    res.json({ success: "Get was successful", posts });
+    res.json({ success: "Get was successful", posts: posts });
   } catch (error) {
     console.error("Failed to fetch riddles:", err);
     res

@@ -5,12 +5,13 @@ import "dotenv/config";
 const PORT = process.env.PORT || 3040;
 const server = express();
 
+server.use(express.static("public"));
+
 server.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
   next();
 });
 
-// Middleware setup
 server.use(express.json());
 server.use("/api", router);
 
