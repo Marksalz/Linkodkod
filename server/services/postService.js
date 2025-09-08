@@ -15,9 +15,12 @@ export async function readById(id) {
   try {
     const posts = await readPosts();
     const filteredPost = posts.filter((post) => post.id === Number(id));
+    if (filteredPost.length <= 0) {
+      throw new Error("post not found 404");
+    }
     return filteredPost;
   } catch (error) {
-    throw new Error("Failed to read post", error.message);
+    throw new Error(error.message);
   }
 }
 
@@ -31,7 +34,7 @@ export async function createNewPost(newPost) {
     await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
     return newPost;
   } catch (error) {
-    throw new Error("Failed to create post", error.message);
+    throw new Error("Failed to create post: ", error.message);
   }
 }
 
@@ -46,7 +49,7 @@ export async function updatePostById(post, id) {
     await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
     return posts[idx];
   } catch (error) {
-    throw new Error("failed to update post", error.message);
+    throw new Error(error.message);
   }
 }
 
@@ -61,6 +64,6 @@ export async function deletePostById(id) {
     await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
     return deleted;
   } catch (error) {
-    throw new Error("failed to delete post", error.message);
+    throw new Error(error.message);
   }
 }

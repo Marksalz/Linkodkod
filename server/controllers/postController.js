@@ -31,12 +31,15 @@ async function readPostById(req, res) {
     const post = await readById(id);
     res.json({ success: true, message: "Get post was successful", post: post });
   } catch (error) {
-    console.error("Failed to fetch post:", error);
-    res.status(500).json({
-      success: false,
-      error: "Failed to fetch post.",
-      details: error.message,
-    });
+    if (error.message === "post not found 404") {
+      res.status(404).end(`Post with Id: ${req.params.id} not found`);
+    } else {
+      res.status(500).json({
+        success: false,
+        error: "Failed to fetch post.",
+        details: error.message,
+      });
+    }
   }
 }
 
@@ -69,7 +72,7 @@ async function updatePost(req, res) {
     });
   } catch (error) {
     if (error.message === "post not found 404") {
-      res.status(404).end(`Post with Id: ${id} not found`);
+      res.status(404).end(`Post with Id: ${req.params.id} not found`);
     } else {
       res.status(500).json({
         success: false,
@@ -93,7 +96,7 @@ async function deletePost(req, res) {
     console.log(error.message);
 
     if (error.message === "post not found 404") {
-      res.status(404).end(`Post with Id: ${id} not found`);
+      res.status(404).end(`Post with Id: ${req.params.id} not found`);
     } else {
       res.status(500).json({
         success: false,
