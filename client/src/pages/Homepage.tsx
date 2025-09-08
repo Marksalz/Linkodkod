@@ -43,7 +43,11 @@ export default function Homepage() {
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       {postsContext.posts &&
         postsContext.posts.map((post) => (
-          <Post key={String(post.id)} postInfo={post} />
+          <Post
+            key={String(post.id)}
+            postInfo={post}
+            likeUrl="src/assets/likeImg.png"
+          />
         ))}
     </div>
   );

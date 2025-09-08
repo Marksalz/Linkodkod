@@ -28,6 +28,9 @@ async function readAllPosts(req, res) {
 async function readPostById(req, res) {
   try {
     const id = req.params.id;
+    if (!id || id < 0) {
+      throw new Error("Id not valid");
+    }
     const post = await readById(id);
     res.json({ success: true, message: "Get post was successful", post: post });
   } catch (error) {
@@ -63,6 +66,9 @@ async function createPost(req, res) {
 async function updatePost(req, res) {
   try {
     const id = req.params.id;
+    if (!id || id < 0) {
+      throw new Error("Id not valid");
+    }
     const post = req.body;
     const updatedPost = await updatePostById(post, id);
     res.json({
@@ -86,6 +92,9 @@ async function updatePost(req, res) {
 async function deletePost(req, res) {
   try {
     const id = req.params.id;
+    if (!id || id < 0) {
+      throw new Error("Id not valid");
+    }
     const deletedPost = await deletePostById(id);
     res.json({
       success: true,

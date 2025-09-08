@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Homepage from "./pages/Homepage";
 import Layout from "./application-layout/Layout";
 import { PostsProvider } from "./contexts/posts.context";
+import PostPage from "./pages/PostPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Homepage />} />
+            <Route path="/post/:id" element={<PostPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

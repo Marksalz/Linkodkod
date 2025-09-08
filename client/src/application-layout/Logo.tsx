@@ -1,3 +1,3 @@
-export default function Logo() {
-  return <img src="src/assets/appLogo.jpeg" alt="Logo of app" />;
+export default function Logo(props: { url: string }) {
+  return <img src={props.url} alt="Logo of app" />;
 }

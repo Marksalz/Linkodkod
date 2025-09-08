@@ -1,9 +1,10 @@
-import type PostInfo from "../interfaces/postDataType";
 import PostData from "./PostData";
 import PostImg from "./PostImg";
 
-export default function Post(props: { postInfo: PostInfo }) {
-  
+export default function Post(props: {
+  postInfo: React.ComponentState;
+  likeUrl: string;
+}) {
   return (
     <div className="post_card">
       <PostImg imgSrc={props.postInfo.imgSrc} />
@@ -12,6 +13,7 @@ export default function Post(props: { postInfo: PostInfo }) {
         description={props.postInfo.description}
         name={props.postInfo.name}
         timestamp={props.postInfo.timestamp}
+        likeUrl={props.likeUrl}
       />
     </div>
   );
