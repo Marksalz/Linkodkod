@@ -3,6 +3,7 @@ import PostData from "./PostData";
 import PostImg from "./PostImg";
 
 export default function Post(props: { postInfo: PostInfo }) {
+  
   return (
     <div className="post_card">
       <PostImg imgSrc={props.postInfo.imgSrc} />
