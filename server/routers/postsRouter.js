@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { readAllPosts } from "../controllers/postController.js";
+import postsCtrl from "../controllers/postController.js";
 
 const postsRouter = Router();
 
-postsRouter.get("/", readAllPosts);
-postsRouter.get("/:id", (req, res) => {});
+postsRouter.get("/", postsCtrl.readAllPosts);
+postsRouter.get("/:id", postsCtrl.readPostById);
 postsRouter.get("/create", (req, res) => {});
 postsRouter.get("/update/:id", (req, res) => {});
 postsRouter.get("/delete/:id", (req, res) => {});
