@@ -1,10 +1,10 @@
-import { readById, readPosts } from "../services/postService.js";
+import { createNewPost, readById, readPosts } from "../services/postService.js";
 
 async function readAllPosts(req, res) {
   try {
     const posts = await readPosts();
     console.error("Success");
-    res.json({ success: "Get was successful", posts: posts });
+    res.json({ success: "Get posts was successful", posts: posts });
   } catch (error) {
     console.error("Failed to fetch posts:", error);
     res
@@ -17,7 +17,7 @@ async function readPostById(req, res) {
   try {
     const id = req.params.id;
     const post = await readById(id);
-    res.json({ success: "Get was successful", post: post });
+    res.json({ success: "Get post was successful", post: post });
   } catch (error) {
     console.error("Failed to fetch post:", error);
     res
@@ -26,9 +26,21 @@ async function readPostById(req, res) {
   }
 }
 
+async function createPost(req, res) {
+  try {
+    const newPost = await createNewPost(req.body);
+    res.json({ success: "Post was created successfully", post: newPost });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Failed to create post.", details: error.message });
+  }
+}
+
 const postsCtrl = {
   readAllPosts,
   readPostById,
+  createPost,
 };
 
 export default postsCtrl;

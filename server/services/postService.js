@@ -20,3 +20,17 @@ export async function readById(id) {
     throw new Error("Failed to read post", error.message);
   }
 }
+
+export async function createNewPost(newPost) {
+  try {
+    const posts = await readPosts();
+    newPost.id = String(
+      posts.length > 0 ? Math.max(...posts.map((p) => Number(p.id))) + 1 : 1
+    );
+    posts.push(newPost);
+    await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
+    return newPost;
+  } catch (error) {
+    throw new Error("Failed to create post", error.message);
+  }
+}
