@@ -37,6 +37,10 @@ export default function Homepage() {
     getPosts();
   }, []);
 
+  const handleClick = (id: any): void => {
+    console.log(`Clicked on ID: ${id}`);
+  };
+
   return (
     <div className="posts_list">
       {isLoading && <p>Loading data...</p>}
@@ -47,6 +51,7 @@ export default function Homepage() {
             key={String(post.id)}
             postInfo={post}
             likeUrl="src/assets/likeImg.png"
+            onClick={post.id && (() => handleClick(post.id))}
           />
         ))}
     </div>
