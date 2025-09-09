@@ -15,6 +15,19 @@ async function readUsers() {
   }
 }
 
+async function readUserById(id) {
+  try {
+    const users = await readUsers();
+    const filteredUser = users.filter((user) => user.id === Number(id));
+    if (filteredUser.length <= 0) {
+      throw new Error("post not found 404");
+    }
+    return filteredUser[0];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 export async function register(username, password) {
   try {
     // Hash password with 12 salt rounds for security
@@ -42,12 +55,47 @@ export async function register(username, password) {
   }
 }
 
+export async function login(id, username, password, token) {
+  try {
+    const user = await readUserById(id);
+
+    //verify user by name
+    if (!(user.username === username)) {
+      throw new Error("Invalid username");
+    }
+
+    // Verify password against stored hash
+    const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+    if (!passwordMatch) {
+      throw new Error("Invalid password");
+    }
+    let tokenFinal = undefined;
+    if (!token) {
+      // Generate new JWT token
+      tokenFinal = generateToken(user);
+    } else {
+      tokenFinal = token;
+    }
+
+    return {
+      message: "Login successful!",
+      token: tokenFinal,
+      user: {
+        id: user.id,
+        username: user.username,
+      },
+      expiresIn: "7d",
+    };
+  } catch (error) {
+    throw new Error("Could not login user: " + error.message);
+  }
+}
+
 function generateToken(user) {
   return jwt.sign(
     {
       id: user.id,
       username: user.username,
-      role: user.role || "user",
     },
     process.env.SECRET,
     { expiresIn: "7d" }

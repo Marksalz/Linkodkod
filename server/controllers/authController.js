@@ -1,4 +1,4 @@
-import { register } from "../services/authService.js";
+import { register, login } from "../services/authService.js";
 
 async function registerUser(req, res) {
   try {
@@ -25,7 +25,35 @@ async function registerUser(req, res) {
   }
 }
 
-async function loginUser(req, res) {}
+async function loginUser(req, res) {
+  try {
+    const { id, username, password } = req.body;
+
+    let token = req.cookies.token;
+
+    if (token) {
+      res.status(200).json({ success: true, message: "Welcome back!" });
+    } else {
+      const result = await login(id, username, password, token);
+
+      res.cookie("token", result.token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: 60,
+        path: "/",
+      });
+
+      res.status(200).json({
+        ...result.user,
+        token: result.token,
+        expiresIn: result.expiresIn,
+      });
+    }
+  } catch (err) {
+    res.status(401).json({ error: err.message || "Server internal error" });
+  }
+}
 
 const authCtrl = { registerUser, loginUser };
 
