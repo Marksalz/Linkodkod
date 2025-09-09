@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import router from "./router.js";
+import cookieParser from "cookie-parser";
 import "dotenv/config";
 
 const PORT = process.env.PORT || 3040;
@@ -15,8 +16,9 @@ const server = express();
 //   res.send("File uploaded successfully!");
 // });
 
+server.use(express.json());
+server.use(cookieParser());
 server.use(express.static("public"));
-
 
 server.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
