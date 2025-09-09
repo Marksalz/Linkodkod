@@ -8,6 +8,7 @@ export default function Form() {
     postDescription: "",
     timestamp: "",
   });
+  //const [file, setFile] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -17,6 +18,7 @@ export default function Form() {
     setErrorMessage("");
     setSuccessMessage("");
 
+    //setFormData((prev) => ({ ...prev, imgSrc: file }));
     try {
       const res = await fetch(`http://localhost:3040/api/posts/create`, {
         method: "POST",
@@ -41,6 +43,9 @@ export default function Form() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  // const handleFileChange = (e: any) => {
+  //   setFile(e.target.files);
+  // };
   const handleCancelClick = () => {};
 
   const resetForm = () => {
@@ -51,18 +56,12 @@ export default function Form() {
     <div className="create_post_area">
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      <form
-        onSubmit={handleSubmit}
-        ref={formRef}
-        // action="/upload-handler"
-        // method="post"
-        // encType="multipart/form-data"
-      >
+      <form onSubmit={handleSubmit} ref={formRef}>
         <div className="create_post_form">
           <label htmlFor="imgSrc">Image: </label>
           <input
             id="img_src"
-            type="file"
+            type="text"
             name="imgSrc"
             onChange={handleChange}
             placeholder="Image source"

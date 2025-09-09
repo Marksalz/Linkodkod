@@ -47,6 +47,8 @@ async function readPostById(req, res) {
 }
 
 async function createPost(req, res) {
+  console.log(req.body);
+  
   try {
     const newPost = await createNewPost(req.body);
     res.json({
