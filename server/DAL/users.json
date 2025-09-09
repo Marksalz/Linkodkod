@@ -3,5 +3,10 @@
     "username": "Mark",
     "hashedPassword": "$2b$12$el2EGuW.o9uZ.esjskVSbOXGu6Q2xP5T9.5G5IMJfFnDLb3Gd6OuC",
     "id": 1
+  },
+  {
+    "username": "Adina",
+    "hashedPassword": "$2b$12$NZCUFDholZvx7bAjbKogQezXHtfwTptPStJ8O35mAaw.0NZLCkNgm",
+    "id": 2
   }
 ]
