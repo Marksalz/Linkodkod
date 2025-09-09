@@ -1,5 +1,4 @@
-import { useState } from "react";
-//import type PostInfo from "../interfaces/postDataType";
+import { useState, useRef } from "react";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -10,13 +9,15 @@ export default function Form() {
     timestamp: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const creationTime = Date().toLocaleString();
-    setFormData((prev) => ({ ...prev, creationTime }));
+    setErrorMessage("");
+    setSuccessMessage("");
+
     try {
-      console.log(formData);
       const res = await fetch(`http://localhost:3040/api/posts/create`, {
         method: "POST",
         headers: {
@@ -25,10 +26,10 @@ export default function Form() {
         body: JSON.stringify(formData),
       });
       const response = await res.json();
-      console.log(response);
       if (response.success === true) {
         setErrorMessage("");
-
+        setSuccessMessage("Post created Successfully!!");
+        resetForm();
       } else {
         setErrorMessage(response.message);
       }
@@ -42,14 +43,15 @@ export default function Form() {
   };
   const handleCancelClick = () => {};
 
+  const resetForm = () => {
+    formRef.current !== null && formRef.current.reset();
+  };
+
   return (
     <div className="create_post_area">
-      {errorMessage ? (
-        <p style={{ color: "red" }}>{errorMessage}</p>
-      ) : (
-        <p style={{ color: "green" }}>{"Post created successfully!!"}</p>
-      )}
-      <form onSubmit={handleSubmit}>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      <form onSubmit={handleSubmit} ref={formRef}>
         <div className="create_post_form">
           <label htmlFor="imgSrc">Image: </label>
           <input
