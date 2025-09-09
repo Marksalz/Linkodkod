@@ -45,18 +45,29 @@ export default function Homepage() {
   };
 
   return (
-    <div className="posts_list">
-      {isLoading && <p>Loading data...</p>}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {postsContext.posts &&
-        postsContext.posts.map((post) => (
-          <Post
-            key={String(post.id)}
-            postInfo={post}
-            likeUrl="src/assets/likeImg.png"
-            onClick={post.id && (() => handleClick(post.id))}
-          />
-        ))}
+    <div>
+      <section className="add_post">
+        <button
+          onClick={() => {
+            navigate("/add_post");
+          }}
+        >
+          Add new post
+        </button>
+      </section>
+      <div className="posts_list">
+        {isLoading && <p>Loading data...</p>}
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        {postsContext.posts &&
+          postsContext.posts.map((post) => (
+            <Post
+              key={String(post.id)}
+              postInfo={post}
+              likeUrl="src/assets/likeImg.png"
+              onClick={post.id && (() => handleClick(post.id))}
+            />
+          ))}
+      </div>
     </div>
   );
 }

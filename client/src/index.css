@@ -5,9 +5,13 @@
   color: #1a1a1a;
 }
 
+html,
 body {
   margin: 0;
-  padding: 0;
+  height: 100%;
+}
+
+body {
   min-width: 320px;
   min-height: 100vh;
   background-color: beige;
@@ -25,7 +29,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: burlywood;
   cursor: pointer;
   transition: border-color 0.25s;
 }

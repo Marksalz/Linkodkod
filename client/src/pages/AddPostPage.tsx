@@ -1,3 +1,9 @@
+import Form from "../components/Form";
+
 export default function AddPostPage() {
-  return <div></div>;
+  return (
+    <div>
+      <Form />
+    </div>
+  );
 }
