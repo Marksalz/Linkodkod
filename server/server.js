@@ -1,9 +1,19 @@
 import express from "express";
+import multer from "multer";
 import router from "./router.js";
 import "dotenv/config";
 
 const PORT = process.env.PORT || 3040;
 const server = express();
+// const upload = multer({ dest: "public/" });
+
+// server.post("/upload-handler", upload.single("imgSrc"), (req, res) => {
+//   console.log(req.file);
+
+//   // req.file contains information about the uploaded file
+//   // The file is already saved in 'uploads/' by Multer
+//   res.send("File uploaded successfully!");
+// });
 
 server.use(express.static("public"));
 
@@ -11,7 +21,6 @@ server.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
   next();
 });
-
 
 server.use((req, res, next) => {
   const origin = req.headers.origin;

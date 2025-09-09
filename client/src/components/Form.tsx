@@ -51,12 +51,18 @@ export default function Form() {
     <div className="create_post_area">
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      <form onSubmit={handleSubmit} ref={formRef}>
+      <form
+        onSubmit={handleSubmit}
+        ref={formRef}
+        // action="/upload-handler"
+        // method="post"
+        // encType="multipart/form-data"
+      >
         <div className="create_post_form">
           <label htmlFor="imgSrc">Image: </label>
           <input
             id="img_src"
-            type="text"
+            type="file"
             name="imgSrc"
             onChange={handleChange}
             placeholder="Image source"
