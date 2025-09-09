@@ -4,7 +4,7 @@ import Content from "./Content";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="layout">
       <Header />
       <Content />
       <Footer />

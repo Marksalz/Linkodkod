@@ -30,6 +30,7 @@ export async function createNewPost(newPost) {
     newPost.id = Number(
       posts.length > 0 ? Math.max(...posts.map((p) => Number(p.id))) + 1 : 1
     );
+    newPost.timestamp = Date().toLocaleString();
     posts.push(newPost);
     await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
     return newPost;
