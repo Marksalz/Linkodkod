@@ -50,3 +50,14 @@
   gap: 1rem;
   margin: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+  .posts_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .multi_img {
+    height: 15rem;
+  }
+}

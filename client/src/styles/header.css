@@ -26,3 +26,25 @@
   font-weight: 700;
   color: darkred;
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    width: 85vw;
+  }
+
+  .header p {
+    grid-row: 1;
+    grid-column: span 2;
+    font-size: 14px;
+  }
+
+  .header img {
+    grid-row: 1;
+    width: 36px;
+    height: 36px;
+  }
+}

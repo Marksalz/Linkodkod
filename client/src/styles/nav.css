@@ -26,3 +26,15 @@
   text-decoration: none;
   color: black;
 }
+
+@media screen and (max-width: 600px) {
+  .nav{
+    justify-content: center;
+    grid-column: span 3;
+  }
+
+  .nav a {
+    width: fit-content;
+    height: fit-content;
+  }
+}
