@@ -43,6 +43,15 @@ async function loginUser(req, res) {
   }
 }
 
-const authCtrl = { registerUser, loginUser };
+async function logoutUser(req, res) {
+  try {
+    res.clearCookie("token");
+    res.send("Cookie cleared!");
+  } catch (error) {
+    res.send(error.message);
+  }
+}
+
+const authCtrl = { registerUser, loginUser, logoutUser };
 
 export default authCtrl;
