@@ -8,5 +8,15 @@
     "username": "Adina",
     "hashedPassword": "$2b$12$NZCUFDholZvx7bAjbKogQezXHtfwTptPStJ8O35mAaw.0NZLCkNgm",
     "id": 2
+  },
+  {
+    "username": "alice",
+    "hashedPassword": "$2b$12$g7cLGL3bJew5c1hGE6Ykkue0v61ynTqYEHDtdP9s74ryXebWhv3C.",
+    "id": 3
+  },
+  {
+    "username": "men",
+    "hashedPassword": "$2b$12$6JFl/3meF1l1WbgkTIUH9.FTr8Z2EUMeQc2P2oQmd/YqY85hbfLKa",
+    "id": 4
   }
 ]

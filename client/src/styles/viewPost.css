@@ -1,0 +1,11 @@
+.single_post {
+  display: flex;
+  background-color: aliceblue;
+  gap: 2rem;
+  padding: 2rem;
+  max-height: 600px;
+}
+
+.single_img {
+  height: auto;
+}

@@ -53,7 +53,6 @@ export default function Form() {
   // const handleFileChange = (e: any) => {
   //   setFile(e.target.files);
   // };
-  const handleCancelClick = () => {};
 
   const resetForm = () => {
     formRef.current !== null && formRef.current.reset();
@@ -95,9 +94,6 @@ export default function Form() {
         </div>
         <div className="post-form-btns">
           <button type="submit">Post</button>
-          <button type="button" onClick={handleCancelClick}>
-            Cancel
-          </button>
         </div>
       </form>
     </div>

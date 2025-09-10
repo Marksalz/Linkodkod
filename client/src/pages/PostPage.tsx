@@ -49,7 +49,7 @@ export default function PostPage() {
     <div className="post_container">
       {isLoading && <p>Loading data...</p>}
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {post && <Post postInfo={post} likeUrl="../src/assets/likeImg.png" />}
+      {post && <Post postInfo={post} likeUrl="../src/assets/likeImg.png" class="single_post"/>}
     </div>
   );
 }
