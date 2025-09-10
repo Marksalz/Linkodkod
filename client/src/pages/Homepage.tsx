@@ -4,6 +4,7 @@ import { usePosts } from "../contexts/posts.context.tsx";
 import { useNavigate } from "react-router";
 
 export default function Homepage() {
+  //window.location.reload();
   const postsContext = usePosts();
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +27,6 @@ export default function Homepage() {
         }
 
         const data = await res.json();
-        console.log(data);
 
         setErrorMessage("");
         postsContext.setPosts(data["posts"]);
@@ -69,6 +69,7 @@ export default function Homepage() {
               postInfo={post}
               likeUrl="src/assets/likeImg.png"
               onClick={post.id && (() => handleClick(post.id))}
+              class="post_card"
             />
           ))}
       </div>

@@ -6,6 +6,7 @@ import Layout from "./application-layout/Layout";
 import { PostsProvider } from "./contexts/posts.context";
 import PostPage from "./pages/PostPage";
 import AddPostPage from "./pages/AddPostPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Homepage />} />
+            <Route index element={<LoginPage />} />
+            <Route path="/home" element={<Homepage />} />
             <Route path="/post/:id" element={<PostPage />} />
-            <Route path="/add_post" element={<AddPostPage  />} />
+            <Route path="/add_post" element={<AddPostPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
-export default function PostImg(props: { imgSrc: string }) {
+export default function PostImg(props: { imgSrc: string; class: string }) {
   return (
     <>
-      <img className="post_img" src={props.imgSrc} alt="post img" />
+      <img className={props.class} src={props.imgSrc} alt="post img" />
     </>
   );
 }

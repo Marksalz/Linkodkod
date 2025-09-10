@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,15 @@ export default function Form() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setErrorMessage("");
+      setSuccessMessage("");
+    }, 4000);
+
+    return () => clearTimeout(timeoutId);
+  }, [errorMessage, successMessage]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +62,6 @@ export default function Form() {
   // const handleFileChange = (e: any) => {
   //   setFile(e.target.files);
   // };
-  const handleCancelClick = () => {};
 
   const resetForm = () => {
     formRef.current !== null && formRef.current.reset();
@@ -95,9 +103,6 @@ export default function Form() {
         </div>
         <div className="post-form-btns">
           <button type="submit">Post</button>
-          <button type="button" onClick={handleCancelClick}>
-            Cancel
-          </button>
         </div>
       </form>
     </div>

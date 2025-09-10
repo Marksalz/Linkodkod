@@ -9,10 +9,7 @@ async function registerUser(req, res) {
 
     res.cookie("token", result.token, {
       httpOnly: true,
-      sameSite: "none",
-      secure: false,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
-      path: "/",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.status(201).json({
@@ -27,16 +24,13 @@ async function registerUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-    const { id, username, password } = req.body;
+    const { username, password } = req.body;
 
-    const result = await login(id, username, password, token);
+    const result = await login(username, password);
 
     res.cookie("token", result.token, {
       httpOnly: true,
-      sameSite: "none",
-      secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      path: "/",
     });
 
     res.status(200).json({

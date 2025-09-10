@@ -1,6 +1,5 @@
 #root {
-  max-width: fit-content;
-  margin: 0 auto;
+  margin: 0;
   padding: 1rem 0;
 }
 
@@ -10,9 +9,13 @@
   align-items: center;
 }
 
+.main_content {
+  max-width: 100%;
+}
+
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   padding: 0 1rem;
   margin: 1rem auto;
@@ -24,20 +27,29 @@
 }
 
 .header img {
+  grid-column: 3;
+  justify-self: end;
   width: 48px;
   height: 48px;
   border-radius: 50%;
 }
 
 .header p {
+  grid-column: 2;
+  justify-self: center;
   font-size: 24px;
   font-weight: 700;
   color: darkred;
 }
 
 .post_card {
-  width: 400px;
-  height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  width: 90%;
+  height: auto;
+  max-width: 400px;
+  max-height: 600px;
   border: 2px solid gray;
   border-radius: 8px;
   padding: 1rem;
@@ -48,9 +60,11 @@
   cursor: pointer;
 }
 
-.post_img {
+.multi_img{
   width: 100%;
-  max-height: 400px;
+  height: 50%;
+  object-fit: cover;
+  margin-bottom: 4px;
 }
 
 .likes {
@@ -65,20 +79,19 @@
   height: 24px;
 }
 
-.post_data {
+/* .post_data {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-}
+} */
 
 .posts_list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  /* flex-direction: row;
-  justify-content: center;
-  align-items: center; */
+  grid-template-columns: repeat(3, 1fr);
+  width: auto;
   gap: 1rem;
+  margin: 2rem;
 }
 
 .footer {
@@ -102,13 +115,18 @@
   justify-content: center;
   align-items: center;
   background-color: bisque;
-  margin: 1rem 0;
+  margin: 1rem 2rem;
   padding: 0.5rem;
   border-radius: 8px;
+  width: auto;
 }
 
 .add_post button {
   background-color: burlywood;
+}
+
+.add_post button:hover{
+  background-color: goldenrod;
 }
 
 .create_post_area {
@@ -116,7 +134,8 @@
   border-radius: 8px;
   padding: 1rem;
   background-color: lightblue;
-  width: 50vw;
+  width: 40vw;
+  margin-top: 3rem;
 }
 
 .create_post_form {
@@ -132,7 +151,5 @@
 }
 
 .post-form-btns {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }

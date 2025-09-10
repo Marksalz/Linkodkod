@@ -1,0 +1,58 @@
+.login_register_container {
+  background-color: bisque;
+  border: 2px solid gray;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+  padding: 2rem;
+  height: 300px;
+  width: fit-content;
+}
+
+.login_form_btn {
+  display: flex;
+}
+
+.login_btn {
+  border-radius: 8px 0 0 8px;
+}
+
+.register_btn {
+  border-radius: 0 8px 8px 0;
+}
+
+#selected_btn {
+  background-color: chocolate;
+}
+
+#selected_btn:hover {
+ background-color: darkgoldenrod;
+}
+
+.login_form_btn button {
+  width: 200px;
+}
+
+.login_form_btn button:hover {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form input {
+  width: 300px;
+  height: 25px;
+  border-radius: 8px;
+}

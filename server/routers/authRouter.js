@@ -4,7 +4,7 @@ import { authenticate } from "../middleware/authenticate.js";
 
 const authRouter = Router();
 
-authRouter.post("/signup",  authCtrl.registerUser);
-authRouter.post("/login", authenticate, authCtrl.loginUser);
+authRouter.post("/signup", authCtrl.registerUser);
+authRouter.post("/login", authCtrl.loginUser);
 
 export default authRouter;
