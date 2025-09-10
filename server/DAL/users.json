@@ -18,5 +18,10 @@
     "username": "men",
     "hashedPassword": "$2b$12$6JFl/3meF1l1WbgkTIUH9.FTr8Z2EUMeQc2P2oQmd/YqY85hbfLKa",
     "id": 4
+  },
+  {
+    "username": "alice222",
+    "hashedPassword": "$2b$12$hTdN5iSIU8mvN1MZD3PC6OdJqKLP5XHOkZrhWY2miZVfkCYyTLetC",
+    "id": 5
   }
 ]

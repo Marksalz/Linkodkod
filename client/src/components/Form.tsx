@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,15 @@ export default function Form() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setErrorMessage("");
+      setSuccessMessage("");
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [errorMessage, successMessage]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
