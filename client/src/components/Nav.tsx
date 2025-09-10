@@ -8,12 +8,12 @@ export default function Nav() {
 
   return (
     <nav className="nav">
-      {!(location.pathname === "/") && (
+      {!(location.pathname === "/" || location.pathname === "/home") && (
         <a onClick={() => navigate(-1)}>Go Back</a>
       )}
       {(location.pathname === "/home" ||
         location.pathname === "/add_post" ||
-        location.pathname === "/posts") && (
+        location.pathname.includes("/post")) && (
         <a
           onClick={async () => {
             try {
