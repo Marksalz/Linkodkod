@@ -17,13 +17,28 @@
   display: flex;
 }
 
+.login_btn {
+  border-radius: 8px 0 0 8px;
+}
+
+.register_btn {
+  border-radius: 0 8px 8px 0;
+}
+
+#selected_btn {
+  background-color: chocolate;
+}
+
+#selected_btn:hover {
+ background-color: darkgoldenrod;
+}
+
 .login_form_btn button {
-  border-radius: 0;
   width: 200px;
 }
 
 .login_form_btn button:hover {
-  background-color: black;
+  background-color: darkgoldenrod;
   color: white;
 }
 

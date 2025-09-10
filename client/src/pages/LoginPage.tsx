@@ -62,18 +62,35 @@ export default function LoginPage() {
     const timeoutId = setTimeout(() => {
       setErrorMessage("");
       setSuccessMessage("");
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timeoutId);
   }, [errorMessage, successMessage]);
+
   return (
     <div className="login_register_container">
       <div className="login_form_btn">
-        <button onClick={() => setisLogin(true)}>Login</button>
-        <button onClick={() => setisLogin(false)}>Register</button>
+        <button
+          className="login_btn"
+          id={isLogin ? "selected_btn" : "none"}
+          onClick={() => setisLogin(true)}
+        >
+          Login
+        </button>
+        <button
+          className="register_btn"
+          id={!isLogin ? "selected_btn" : "none"}
+          onClick={() => setisLogin(false)}
+        >
+          Register
+        </button>
       </div>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      {errorMessage && (
+        <p style={{ color: "red", fontWeight: 700 }}>{errorMessage}</p>
+      )}
+      {successMessage && (
+        <p style={{ color: "green", fontWeight: 700 }}>{successMessage}</p>
+      )}
       <LoginForm
         formFields={[
           {
@@ -92,70 +109,6 @@ export default function LoginPage() {
         showLogin={isLogin}
         onClick={isLogin ? handleLoginClick : handleRegisterClick}
       />
-
-      {/* {showLoginForm ? (
-        <LoginForm
-          formFields={[
-            {
-              id: "username",
-              name: "username",
-              type: "text",
-              placeholder: "Username",
-            },
-            {
-              id: "password",
-              name: "password",
-              type: "password",
-              placeholder: "Password",
-            },
-          ]}
-          showLogin={showLoginForm}
-          onClick={async (formData) => {
-            try {
-              const res = await fetch(`http://localhost:3040/api/auth/login`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify(formData),
-              });
-
-              if (res.status === 401) {
-                throw new Error(await res.text());
-              }
-
-              const data = await res.json();
-              console.log(data);
-
-              if (res.ok) {
-                navigate("/home");
-              }
-            } catch (error: any) {
-              alert(error.message || "Login failed failed");
-            }
-          }}
-        />
-      ) : (
-        <LoginForm
-          formFields={[
-            {
-              id: "username",
-              name: "username",
-              type: "text",
-              placeholder: "Username",
-            },
-            {
-              id: "password",
-              name: "password",
-              type: "password",
-              placeholder: "Password",
-            },
-          ]}
-          showLogin={showLoginForm}
-          onClick={}
-        />
-      )} */}
     </div>
   );
 }

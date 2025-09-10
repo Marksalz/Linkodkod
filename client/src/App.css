@@ -125,6 +125,10 @@
   background-color: burlywood;
 }
 
+.add_post button:hover{
+  background-color: goldenrod;
+}
+
 .create_post_area {
   border: 2px solid gray;
   border-radius: 8px;

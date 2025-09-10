@@ -17,7 +17,7 @@ export default function Form() {
     const timeoutId = setTimeout(() => {
       setErrorMessage("");
       setSuccessMessage("");
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timeoutId);
   }, [errorMessage, successMessage]);
