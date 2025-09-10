@@ -5,7 +5,7 @@ export default function Form() {
     imgSrc: "",
     likes: 0,
     name: "",
-    postDescription: "",
+    description: "",
     timestamp: "",
   });
   //const [file, setFile] = useState();
@@ -58,6 +58,7 @@ export default function Form() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    console.log(formData);
   };
   // const handleFileChange = (e: any) => {
   //   setFile(e.target.files);
@@ -93,9 +94,9 @@ export default function Form() {
           />
           <label htmlFor="postDescription">Post description: </label>
           <input
-            id="postDescription"
+            id="description"
             type="text"
-            name="postDescription"
+            name="description"
             onChange={handleChange}
             placeholder="Post Description"
             required
