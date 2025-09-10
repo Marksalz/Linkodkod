@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Logo from "./Logo";
 import Slogan from "./Slogen";
+import "../styles/header.css";
 
 export default function Header() {
   return (
