@@ -15,12 +15,12 @@ async function readUsers() {
   }
 }
 
-async function readUserById(id) {
+async function readUserByName(name) {
   try {
     const users = await readUsers();
-    const filteredUser = users.filter((user) => user.id === Number(id));
+    const filteredUser = users.filter((user) => user.username === name);
     if (filteredUser.length <= 0) {
-      throw new Error("post not found 404");
+      throw new Error("user not found 404");
     }
     return filteredUser[0];
   } catch (error) {
@@ -55,9 +55,9 @@ export async function register(username, password) {
   }
 }
 
-export async function login(id, username, password, token) {
+export async function login(username, password) {
   try {
-    const user = await readUserById(id);
+    const user = await readUserByName(username);
 
     //verify user by name
     if (!(user.username === username)) {
@@ -69,17 +69,12 @@ export async function login(id, username, password, token) {
     if (!passwordMatch) {
       throw new Error("Invalid password");
     }
-    let tokenFinal = undefined;
-    if (!token) {
-      // Generate new JWT token
-      tokenFinal = generateToken(user);
-    } else {
-      tokenFinal = token;
-    }
+
+    const token = generateToken(user);
 
     return {
       message: "Login successful!",
-      token: tokenFinal,
+      token: token,
       user: {
         id: user.id,
         username: user.username,

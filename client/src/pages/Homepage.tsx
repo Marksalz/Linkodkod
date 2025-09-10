@@ -4,6 +4,7 @@ import { usePosts } from "../contexts/posts.context.tsx";
 import { useNavigate } from "react-router";
 
 export default function Homepage() {
+  //window.location.reload();
   const postsContext = usePosts();
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);

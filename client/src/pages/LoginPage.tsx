@@ -1,3 +1,4 @@
+import "../styles/loginForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import LoginForm from "../components/LoginForm";
@@ -29,22 +30,32 @@ export default function LoginPage() {
           ]}
           showLogin={showLoginForm}
           onClick={async (formData) => {
-            const res = await fetch(`http://localhost:3040/api/auth/login`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              credentials: "include",
-              body: JSON.stringify(formData),
-            });
-            const data = await res.json();
-            if (res.ok) {
-              console.log(res.headers);
+            try {
+              const res = await fetch(`http://localhost:3040/api/auth/login`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify(formData),
+              });
 
-              alert(`Welcome back! User info: ${JSON.stringify(data.user)}`);
-              navigate("/menu");
-            } else {
-              alert(data.error || "Login failed failed");
+              if (res.status === 401) {
+                throw new Error(await res.text());
+              }
+
+              const data = await res.json();
+              console.log(data);
+
+              if (res.ok) {
+                // alert(
+                //   `Welcome back! User info: ${JSON.stringify(data.username)}`
+                // );
+                //setTimeout(() => {}, 5000);
+                navigate("/home");
+              }
+            } catch (error: any) {
+              alert(error.message || "Login failed failed");
             }
           }}
         />
@@ -84,7 +95,7 @@ export default function LoginPage() {
               //   role: data.role,
               //   lowestTime: data.lowestTime,
               // };
-              navigate("/menu");
+              navigate("/home");
             } else {
               alert(data.error || "Registration failed");
             }
