@@ -31,8 +31,6 @@ export default function LoginPage() {
         navigate("/home");
       }
     } catch (error: any) {
-      console.log(error);
-
       setErrorMessage(error.message || "Login failed failed");
     }
   };

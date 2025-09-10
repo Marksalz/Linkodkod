@@ -47,8 +47,6 @@ async function readPostById(req, res) {
 }
 
 async function createPost(req, res) {
-  console.log(req.body);
-  
   try {
     const newPost = await createNewPost(req.body);
     res.json({
@@ -104,8 +102,6 @@ async function deletePost(req, res) {
       post: deletedPost,
     });
   } catch (error) {
-    console.log(error.message);
-
     if (error.message === "post not found 404") {
       res.status(404).end(`Post with Id: ${req.params.id} not found`);
     } else {
