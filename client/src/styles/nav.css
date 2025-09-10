@@ -1,4 +1,9 @@
 .nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
   grid-column: 1;
   justify-self: start;
   border: 2px solid black;
@@ -7,16 +12,17 @@
   text-decoration: none;
   background-color: burlywood;
 }
-.nav:hover {
-  background-color: bisque;
+.nav a:hover {
+  background-color: goldenrod;
   cursor: pointer;
 }
 
-.nav:active {
+.nav a:active {
   background-color: brown;
 }
 
 .nav a {
+  font-weight: 600;
   text-decoration: none;
   color: black;
 }

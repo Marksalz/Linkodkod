@@ -86,6 +86,12 @@ export async function login(username, password) {
   }
 }
 
+// export function logout(token){
+//   if (token) {
+    
+//   }
+// }
+
 function generateToken(user) {
   return jwt.sign(
     {
