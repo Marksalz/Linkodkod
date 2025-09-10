@@ -31,6 +31,8 @@ export async function createNewPost(newPost) {
       posts.length > 0 ? Math.max(...posts.map((p) => Number(p.id))) + 1 : 1
     );
     newPost.timestamp = Date().toLocaleString();
+    const fileName = "http://localhost:3040/" + newPost.imgSrc;
+    newPost.imgSrc = fileName;
     posts.push(newPost);
     await writeFile(filePath, JSON.stringify(posts, null, 2), "utf8");
     return newPost;

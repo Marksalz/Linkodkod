@@ -74,7 +74,7 @@ export default function Form() {
       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
       <form onSubmit={handleSubmit} ref={formRef}>
         <div className="create_post_form">
-          <label htmlFor="imgSrc">Image: </label>
+          <label htmlFor="imgSrc">Image: (please enter from public folder) </label>
           <input
             id="img_src"
             type="text"

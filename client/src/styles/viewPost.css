@@ -1,5 +1,4 @@
 .single_post {
-  height: 50%;
   display: flex;
   background-color: aliceblue;
   gap: 2rem;
@@ -7,9 +6,31 @@
   max-height: 600px;
   border-radius: 8px;
   border: 2px solid gray;
+  height: 50%;
 }
 
 .single_img {
   height: auto;
   border-radius: 8px;
+}
+
+.post_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .single_post {
+    max-width: 75vw;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  /* .single_img {
+    height: 20vh;
+  } */
 }

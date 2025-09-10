@@ -1,0 +1,43 @@
+.add_post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+  margin: 1rem 2rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  width: auto;
+}
+
+.add_post button {
+  background-color: burlywood;
+}
+
+.add_post button:hover {
+  background-color: goldenrod;
+}
+
+.create_post_area {
+  border: 2px solid gray;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: rgb(239, 220, 165);
+  width: 40vw;
+  margin-top: 3rem;
+}
+
+.create_post_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create_post_form input {
+  height: 1.5rem;
+  border: 2px solid gray;
+  border-radius: 8px;
+  background-color: aliceblue;
+}
+
+.post-form-btns {
+  margin-top: 1rem;
+}
