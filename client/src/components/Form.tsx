@@ -25,9 +25,16 @@ export default function Form() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
+
+      if (res.status === 401) {
+        throw new Error(await res.text());
+      }
+
       const response = await res.json();
+
       if (response.success === true) {
         setErrorMessage("");
         setSuccessMessage("Post created Successfully!!");

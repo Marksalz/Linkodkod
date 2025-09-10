@@ -1,5 +1,6 @@
 import { Router } from "express";
 import postsCtrl from "../controllers/postController.js";
+import { authenticate } from "../middleware/authenticate.js";
 import multer from "multer";
 
 const postsRouter = Router();
@@ -16,10 +17,10 @@ const postsRouter = Router();
 // const upload = multer({ storage });
 //upload.single("imgSrc"),
 
-postsRouter.get("/", postsCtrl.readAllPosts);
-postsRouter.get("/:id", postsCtrl.readPostById);
-postsRouter.post("/create", postsCtrl.createPost);
-postsRouter.put("/update/:id", postsCtrl.updatePost);
-postsRouter.delete("/delete/:id", postsCtrl.deletePost);
+postsRouter.get("/", authenticate, postsCtrl.readAllPosts);
+postsRouter.get("/:id", authenticate, postsCtrl.readPostById);
+postsRouter.post("/create", authenticate, postsCtrl.createPost);
+postsRouter.put("/update/:id", authenticate, postsCtrl.updatePost);
+postsRouter.delete("/delete/:id", authenticate, postsCtrl.deletePost);
 
 export default postsRouter;

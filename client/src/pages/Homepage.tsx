@@ -18,19 +18,23 @@ export default function Homepage() {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
         });
-        if (!res.ok) {
-          setErrorMessage("Error fetching posts");
-          return;
+
+        if (res.status === 401) {
+          throw new Error(await res.text());
         }
+
         const data = await res.json();
+        console.log(data);
+
         setErrorMessage("");
         postsContext.setPosts(data["posts"]);
 
         localStorage.setItem("posts", JSON.stringify(data));
         return data;
-      } catch (error) {
-        setErrorMessage("Error fetching posts");
+      } catch (error: any) {
+        setErrorMessage("Error fetching posts: " + error.message);
       } finally {
         setIsLoading(false);
       }
