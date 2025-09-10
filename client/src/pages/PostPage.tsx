@@ -19,18 +19,25 @@ export default function PostPage() {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
         });
-        if (!res.ok) {
-          setErrorMessage("Error fetching post");
-          return;
+
+        if (res.status === 401) {
+          throw new Error(await res.text());
         }
+
+        // if (!res.ok) {
+        //   setErrorMessage("Error fetching post");
+        //   return;
+        // }
+
         const data = await res.json();
         setPost(data["post"][0]);
         setErrorMessage("");
         localStorage.setItem("posts", JSON.stringify(data));
         return data;
-      } catch (error) {
-        setErrorMessage("Error fetching post");
+      } catch (error: any) {
+        setErrorMessage("Error fetching post: " + error.message);
       } finally {
         setIsLoading(false);
       }
