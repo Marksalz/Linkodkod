@@ -8,7 +8,6 @@ export default function Form() {
     description: "",
     timestamp: "",
   });
-  //const [file, setFile] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -27,7 +26,6 @@ export default function Form() {
     setErrorMessage("");
     setSuccessMessage("");
 
-    //setFormData((prev) => ({ ...prev, imgSrc: file }));
     try {
       const res = await fetch(`http://localhost:3040/api/posts/create`, {
         method: "POST",
@@ -58,11 +56,7 @@ export default function Form() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    console.log(formData);
   };
-  // const handleFileChange = (e: any) => {
-  //   setFile(e.target.files);
-  // };
 
   const resetForm = () => {
     formRef.current !== null && formRef.current.reset();

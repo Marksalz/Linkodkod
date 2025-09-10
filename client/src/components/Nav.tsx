@@ -4,7 +4,6 @@ import { useLocation } from "react-router";
 export default function Nav() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <nav className="nav">

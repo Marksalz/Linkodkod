@@ -5,7 +5,6 @@ async function registerUser(req, res) {
     const { username, password } = req.body;
 
     const result = await register(username, password);
-    console.log(result);
 
     res.cookie("token", result.token, {
       httpOnly: true,
