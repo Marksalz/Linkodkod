@@ -10,7 +10,7 @@ async function registerUser(req, res) {
     res.cookie("token", result.token, {
       httpOnly: true,
       sameSite: "none",
-      secure: true,
+      secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
       path: "/",
     });
@@ -34,7 +34,7 @@ async function loginUser(req, res) {
     res.cookie("token", result.token, {
       httpOnly: true,
       sameSite: "none",
-      secure: true,
+      secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
